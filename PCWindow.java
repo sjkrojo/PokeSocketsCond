@@ -2,6 +2,7 @@ package co.edu.unbosque.view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.List;
 
@@ -9,13 +10,18 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 public class PCWindow extends JFrame {
 
-	private JButton getin_button, getout_button, free_button, info_button, exit_button, pokemon1, pokemon2, pokemon3,
-			pokemon4, pokemon5, pokemon6, left_button, right_button, pokemon_box;
+	private JButton getin_button, getout_button, free_button, info_button, exit_button, left_button, right_button, pokemon_box;
 	private JPanel actions, team_pokemon, box_head, box;
 	private JLabel box_name;
+	private JScrollPane scroll_pane;
+	private JTextField pokemon;
+	private JTextArea pokemon1, pokemon2, pokemon3,pokemon4, pokemon5, pokemon6, box_area;
 
 	public PCWindow() {
 		setBounds(500, 0, 600, 500);
@@ -54,28 +60,34 @@ public class PCWindow extends JFrame {
 		team_pokemon.setLayout(null);
 		add(team_pokemon);
 
-		pokemon1 = new JButton("1"); // Pokemon del equipo 1
+		pokemon1 = new JTextArea("1"); // Pokemon del equipo 1
 		pokemon1.setBounds(75, 25, 50, 50);
+		pokemon1.setEditable(false);
 		team_pokemon.add(pokemon1);
 
-		pokemon2 = new JButton("2"); // Pokemon del equipo 2
+		pokemon2 = new JTextArea("2"); // Pokemon del equipo 2
 		pokemon2.setBounds(150, 25, 50, 50);
+		pokemon2.setEditable(false);
 		team_pokemon.add(pokemon2);
 
-		pokemon3 = new JButton("3"); // Pokemon del equipo 3
+		pokemon3 = new JTextArea("3"); // Pokemon del equipo 3
 		pokemon3.setBounds(225, 25, 50, 50);
+		pokemon3.setEditable(false);
 		team_pokemon.add(pokemon3);
 
-		pokemon4 = new JButton("4"); // Pokemon del equipo 4
+		pokemon4 = new JTextArea("4"); // Pokemon del equipo 4
 		pokemon4.setBounds(300, 25, 50, 50);
+		pokemon4.setEditable(false);
 		team_pokemon.add(pokemon4);
 
-		pokemon5 = new JButton("5"); // Pokemon del equipo 5
+		pokemon5 = new JTextArea("5"); // Pokemon del equipo 5
 		pokemon5.setBounds(375, 25, 50, 50);
+		pokemon5.setEditable(false);
 		team_pokemon.add(pokemon5);
 
-		pokemon6 = new JButton("6"); // Pokemon del equipo 6
+		pokemon6 = new JTextArea("6"); // Pokemon del equipo 6
 		pokemon6.setBounds(450, 25, 50, 50);
+		pokemon6.setEditable(false);
 		team_pokemon.add(pokemon6);
 
 		box_head = new JPanel(); // Panel donde está el nombre de la caja y las flechas para moverla
@@ -101,6 +113,22 @@ public class PCWindow extends JFrame {
 		box.setBackground(Color.black);
 		box.setLayout(new BorderLayout());
 		add(box);
+		
+		box_area = new JTextArea(); // Lista en la que salen los pokemon
+		box_area.setBounds(25, 25, 200, 150);
+		box_area.setEditable(false);
+		box.add(box_area);
+		
+		scroll_pane = new JScrollPane(box_area); // Scroll para bajar en la lista de pokemon
+		scroll_pane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		scroll_pane.setPreferredSize(new Dimension(10, 225));
+		box.add(scroll_pane);
+		
+		pokemon = new JTextField(); // Campo de texto para ingresar el pokemon que se va a utilizar
+		pokemon.setBounds(115, 65, 150,30);
+		box_head.add(pokemon);
+		
+		
 
 	}
 
@@ -142,54 +170,6 @@ public class PCWindow extends JFrame {
 
 	public void setExit_button(JButton exit_button) {
 		this.exit_button = exit_button;
-	}
-
-	public JButton getPokemon1() {
-		return pokemon1;
-	}
-
-	public void setPokemon1(JButton pokemon1) {
-		this.pokemon1 = pokemon1;
-	}
-
-	public JButton getPokemon2() {
-		return pokemon2;
-	}
-
-	public void setPokemon2(JButton pokemon2) {
-		this.pokemon2 = pokemon2;
-	}
-
-	public JButton getPokemon3() {
-		return pokemon3;
-	}
-
-	public void setPokemon3(JButton pokemon3) {
-		this.pokemon3 = pokemon3;
-	}
-
-	public JButton getPokemon4() {
-		return pokemon4;
-	}
-
-	public void setPokemon4(JButton pokemon4) {
-		this.pokemon4 = pokemon4;
-	}
-
-	public JButton getPokemon5() {
-		return pokemon5;
-	}
-
-	public void setPokemon5(JButton pokemon5) {
-		this.pokemon5 = pokemon5;
-	}
-
-	public JButton getPokemon6() {
-		return pokemon6;
-	}
-
-	public void setPokemon6(JButton pokemon6) {
-		this.pokemon6 = pokemon6;
 	}
 
 	public JButton getLeft_button() {
@@ -255,16 +235,5 @@ public class PCWindow extends JFrame {
 	public void setBox_name(JLabel box_name) {
 		this.box_name = box_name;
 	}
-	
-	public JPanel crearPanel(List<String> elementos) {
-        box = new JPanel(new GridLayout(elementos.size(), 1));
-        
-        for (String elemento : elementos) {
-            pokemon_box = new JButton(elemento);
-            box.add(pokemon_box);
-        }
-        
-        return box;
-    }
 
 }
