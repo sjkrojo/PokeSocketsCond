@@ -189,8 +189,8 @@ public class RegisterWindow extends JFrame {
 		this.mail_textfield = mail_textfield;
 	}
 	
-	public String loginData() { // Construye un string con la informacion de los textfield
-		return "login," + user_textfield.getText() + "," + password_textfield.getText() + "," + mail_textfield.getText();
+	public String registerData() { // Construye un string con la informacion de los textfield
+		return "register," + user_textfield.getText() + "," + password_textfield.getText() + "," + mail_textfield.getText();
 	}
 
 	public void eraseData() { // Borra los datos en los textfield

@@ -65,7 +65,7 @@ public class FileController {
 		try {
 			lector = new ObjectInputStream(archivo_entrada);
 		} catch (IOException e) {
-			System.out.println("Error al leer al archivo");
+			System.out.println("Error al leer al archivo  1 ");
 			System.out.println(e.getMessage());
 		}
 	}

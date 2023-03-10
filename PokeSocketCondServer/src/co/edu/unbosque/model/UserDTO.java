@@ -15,7 +15,7 @@ public class UserDTO implements Serializable {
 	private ArrayList<PokemonDTO>[] listasPokemon;
 
 	public UserDTO() {
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public UserDTO(String user, String password, String email, String personaje, PokemonDTO[] bolsilloPokemon,
@@ -87,10 +87,15 @@ public class UserDTO implements Serializable {
 
 	@Override // to String para mostrar la info
 	public String toString() {
-		String res = ( "\n" + "\n" + "Usuario: " + this.user + " password: " + this.password + " Email: " + this.email + " personaje: "
-				+ this.personaje + "\n" + "\n" + "Pokemones en el bolsillo: " + Arrays.toString(this.bolsilloPokemon) + "\n"
-				+ "\n" + "Pokemones en las cajas:" + Arrays.toString(this.listasPokemon) + "\n" );
+		String res = ("\n" + "\n" + "Usuario: " + this.user + " password: " + this.password + " Email: " + this.email
+				+ " personaje: " + this.personaje + "\n" + "\n" + "Pokemones en el bolsillo: "
+				+ Arrays.toString(this.bolsilloPokemon) + "\n" + "\n" + "Pokemones en las cajas:"
+				+ Arrays.toString(this.listasPokemon) + "\n");
 
 		return res;
+	}
+
+	public String getData() {
+		return this.user + "," + this.password + "," + this.email + "," + this.personaje;
 	}
 }
